@@ -1,0 +1,1 @@
+deneyap kartta ESP32 işlemci var
