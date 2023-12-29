@@ -1,0 +1,3 @@
+LDR’nin yapısına göre üzerine düşen ışık miktarı arttıkça direnç değeri düşmekte
+veya artmaktadır. Bu uygulamada kullanılacak olan LDR’nin değeri ortamdaki ışık miktarı arttıkça
+düşmektedir.
