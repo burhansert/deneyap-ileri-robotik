@@ -1,0 +1,7 @@
+Kırmızı ile gösterilen pinler güç giriş ve çıkışlarını ifade etmektedir. GND olarak belirtilen siyah
+portlar topraklama amacıyla kullanılmaktadır. Kahverengi portlar (DAC1 ve DAC2) analog
+çıkışlardır. Turuncu portlar analog girişler, yeşil portlar ise dijital giriş ve çıkışlardır. Dijital
+portların giriş veya çıkış ayarı kod tanımlamaları üzerinden yapılmaktadır. Mavi ile gösterilen TX
+ve RX pinleri UART haberleşme için kullanılan alıcı ve verici portlarıdır. Lacivert ile gösterilen SDA
+ve SCL pinleri I2C haberleşmesi için kullanılmaktadır. Gri ile gösterilen pinler ise SPI haberleşme
+için kullanılmaktadır.
