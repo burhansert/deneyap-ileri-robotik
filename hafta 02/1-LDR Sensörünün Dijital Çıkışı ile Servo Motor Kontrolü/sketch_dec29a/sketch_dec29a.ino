@@ -17,15 +17,15 @@ void loop() {
   sensor1 = digitalRead(L1_pin);  //sağ ışık sensöründen gelen dijital verinin okunması
   sensor2 = digitalRead(L2_pin);  //sol ışık sensöründen gelen dijital verinin okunması
 
-  if (sensor1 > sensor2)  //sağ LDR’ye düşen ışık > sol LDR’ye düşen ışık
+  if (sensor1 == 1 and sensor2 == 0)  //sağ LDR’ye düşen ışık > sol LDR’ye düşen ışık
   {
     pos = 0;
     myservo.write(pos);          //pozisyon değeri 0 derece olarak motora gönderilir.
-  } else if (sensor2 > sensor1)  //sol LDR’ye düşen ışık > sağ LDR’ye düşen ışık
+  } else if (sensor1 == 0 and sensor2 == 1)  //sol LDR’ye düşen ışık > sağ LDR’ye düşen ışık
   {
     pos = 180;
     myservo.write(pos);          //pozisyon değeri 180 derece olarak motora gönderilir.
-  } else if (sensor2 = sensor1)  //sağ LDR’ye düşen ışık = sol LDR’ye düşen ışık
+  } else if ((sensor1 == 1 and sensor2 == 1) or (sensor1 == 0 and sensor2 == 0))  //sağ LDR’ye düşen ışık = sol LDR’ye düşen ışık
   {
     pos = 90;
     myservo.write(pos);  //pozisyon değeri 90 derece olarak motora gönderilir.
