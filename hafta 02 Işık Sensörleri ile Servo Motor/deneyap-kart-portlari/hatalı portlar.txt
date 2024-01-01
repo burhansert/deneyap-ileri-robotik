@@ -1,0 +1,3 @@
+D2, D3 ve D8 pini özel kullanımı olan pinler olup, kod atma sırasında hata alımına
+sebep verebilecek pinlerdir. Bu pinlerin detaylı kullanımı
+https://docs.deneyapkart.org/ sayfasından inceleyebilirsiniz.

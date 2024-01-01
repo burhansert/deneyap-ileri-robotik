@@ -7,6 +7,7 @@ int sensor1, sensor2;
 int pos = 0;
 
 void setup() {
+  Serial.begin(9600);
   myservo.attach(SERVOPIN);
   pinMode(L1_pin, INPUT);
   pinMode(L2_pin, INPUT);
@@ -15,7 +16,9 @@ void setup() {
 void loop() {
   sensor1 = (4095 - analogRead(L1_pin)) * 90 / 4095;  //ışık miktarının analog değer olarak tespiti
   sensor2 = (4095 - analogRead(L2_pin)) * 90 / 4095;
-
+  Serial.print(sensor1);
+  Serial.print("ss");
+  Serial.println(sensor2);
   if (sensor1 > sensor2)  //sağ LDR’ye düşen ışık > sol LDR’ye düşen ışık
   {
     pos = (sensor1 - sensor2) + 90;  //LDRlere düşen ışık miktarı farkına göre konum belirlenir.

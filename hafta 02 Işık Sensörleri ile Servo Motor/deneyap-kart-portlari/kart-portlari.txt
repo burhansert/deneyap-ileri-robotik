@@ -1,0 +1,60 @@
+*Kırmızı ile gösterilen pinler güç giriş ve çıkışlarını ifade etmektedir. 
+*GND olarak belirtilen siyah portlar topraklama amacıyla kullanılmaktadır. 
+*Kahverengi portlar (DAC1 ve DAC2) analog çıkışlardır. 
+*Turuncu portlar analog girişler, yeşil portlar ise dijital giriş ve çıkışlardır. 
+*Dijital portların giriş veya çıkış ayarı kod tanımlamaları üzerinden yapılmaktadır. 
+*Mavi ile gösterilen TX ve RX pinleri UART haberleşme için kullanılan alıcı ve verici portlarıdır. 
+*Lacivert ile gösterilen SDA ve SCL pinleri I2C haberleşmesi için kullanılmaktadır. 
+*Gri ile gösterilen pinler ise SPI haberleşme için kullanılmaktadır.
+
+GND: Sensörlerin ve devre elemanlarının GND veya “-“ uçları bu pine bağlanır ve
+topraklama sağlar.
+3,3V: Bu pinler 3,3V’luk besleme gerektiren cihazlara bağlanır ve enerji çıkış pinidir.
+USB ve Li-Po batarya güç girişi bağlantıları ile kart beslendiğinde DC-VC voltaj
+dönüştürücü aracılığıyla 3.3V gerilim ve 1A akım çıkış kapasitesine sahiptir.
+5V: Bu pin 5V gerilim ve 0.5A akım çıkışı vermektedir. 5V’luk besleme gerektiren
+cihazlara bağlanır ve enerji çıkış pinidir.
+VBAT: Harici olarak bağlanan Li-Po bataryanın 3.3V-4.2V arasındaki gerilimini çıkış
+olarak vermektedir. Harici bağlanacak üniteleri beslemek için kullanılabilir.
+
+Analog- Dijital Veri ve Pinler
+Analog ve dijital veri kavramlarını kısaca açıklamak gerekirse analog veri zamana göre
+sonsuz bir değer alan veri türü iken dijital veri genel olarak “var” (1) veya “yok” (0)
+bilgisinden oluşur. Örneğin bir arabanın hareketli ya da hareketsiz olması dijital bir veri
+gibi düşünülebilecekken arabanın seyir halindeki hızı ise analog bir veridir.
+Deneyap Kart’ta aşağıdaki şekilde görüldüğü üzere D0 ile D15 arasında 16 adet dijital
+giriş-çıkış pini bulunmaktadır. Bu pinler “0” iken 0V, “1” iken ise 3.3V gerilim değerine
+sahip olurlar. Deneyap Kart’taki tüm dijital pinler PTC sigortalar ile kısa devre koruması
+altındadır. Burada dikkat edilmesi gereken nokta; Deneyap Kart’taki dijital pinler diğer
+bazı mikrodenetleyici kartlardaki gibi 5V gerilim toleranslı değildir.
+
+Deneyap Kart üzerindeki “A0, A1, A2, A3, A4 ve A5” analog giriş pinleridir. 0V ile 3.3V
+aralığındaki analog işaretler için giriş pini olarak kullanılmaktadır. Bu pinler, bazı
+sensörler ve diğer devre elemanlarından gelen analog veriyi Deneyap Kart’a 0 ile 4095
+arasında bir değer alarak aktarırlar. Deneyap Kart üzerindeki analog pinlerden A0 ile
+A3 arasındaki pinler sadece giriş pini olarak kullanılırken, A4 ve A5 pinleri dijital
+giriş/çıkış pini olarak da kullanılabilir.
+
+Analog çıkış sağlamak için ise Deneyap Kart üzerinde “DAC1 ve DAC2” pinleri
+bulunmaktadır. Bu pinler aracılığı ile 0V ile 3.3V aralığında analog sinyal çıkışı
+alınabilir. Bu pinler aynı zamanda dijital giriş/çıkış pini olarak da kullanılabilir.
+
+PWM: Deneyap Kart üzerinde analog çıkış verebilmek için tüm dijital pinler (D0 - D15)
+“0 ile 255” arasında değerler alarak ve dijital çıkışın frekansını arttırarak analog bir pin
+gibi davranırlar. Bu çıkışlara “PWM (Darbe Genişlik Modülasyonu)” çıkışları denir.
+Deneyap Kart üzerindeki dijital pinlerin analog çıkışı için PWM pini olarak
+kullanılabilmeleri için kodlama esnasında kanal ataması gibi ekstra ayarlamalar
+yapılması gerekmektedir. Aşağıdaki gözle ve uygula etkinliklerinde bu ayarlamalar ile
+ilgili detaylı bilgiler sunulacaktır. Bunlara ek olarak Deneyap Kart üzerindeki D0 ve D1
+pinleri aynı zamanda PWM0 ve PWM1 pinleri olarak ek bir kodlama ayarı
+gerektirmeksizin PWM pini olarak analog çıkş için kullanılabilirler.
+
+PWM pinlerinin kullanımına ilişkin bir örnek verilecek olursa normalde bu pinler dijital
+çıkış (0-3.3V, HIGH-LOW vb.) üretmesine karşın bu pinlere bağlı olan LED’lerin
+parlaklığı analog çıkış verecek şekilde ayarlanabilir. Aşağıda öğrencilerle LED
+parlaklığını 5 sn içerisinde maksimum parlaklığa ulaştırıp sönen ve “5 sn” sonra tekrar
+yanan bir uygulama gerçekleştirilecektir. LED parlaklığının 5 sn içerisinde maksimum
+parlaklığa ulaşması “0” değerinden başlayarak “255” değerine kadar ulaşmasını
+gerektirmektedir. “5 sn” içinde sönüp tekrar yanması da bu uygulamanın bir döngü
+içerisinde devam edeceğini göstermektedir. Aşağıdaki resimlerde led parlaklık grafiği
+ve etkinlik örnek devre şeması görülmektedir.
